@@ -1,0 +1,1124 @@
+import QtQuick 2.4
+import QtQuick.Controls 1.3
+import QtQuick.Window 2.2
+import QtQuick.Dialogs 1.2
+
+
+
+ApplicationWindow {
+
+   function shiftPXY(curNumb)
+   {
+     var z =0;
+     if (curNumb<0)
+     {
+
+         for(z = curNumb;z<0;z++)
+             if (mainWin.curPlayer === 0)
+             {
+
+
+
+               image1.curNumb--
+
+             }
+             if (mainWin.curPlayer === 1)
+             {
+
+
+               image2.curNumb--
+             }
+             if (mainWin.curPlayer === 2)
+             {
+
+
+               image3.curNumb--
+             }
+             if (mainWin.curPlayer === 3)
+             {
+
+
+               image4.curNumb--
+             }
+
+     }
+    else{
+     for( z = 0;z<curNumb;z++)
+           {
+         if (mainWin.curPlayer === 0)
+         {
+
+
+
+           image1.curNumb++
+           if(image1.curNumb>60)
+           {
+               pole.visible = false;
+
+               win.visible = true
+
+
+           }
+
+
+
+
+
+         }
+         if (mainWin.curPlayer === 1)
+         {
+
+
+           image2.curNumb++
+             if(image2.curNumb>60)
+             {
+                 pole.visible = false;
+
+                 win.visible = true
+
+
+             }
+
+         }
+         if (mainWin.curPlayer === 2)
+         {
+
+
+           image3.curNumb++
+             if(image3.curNumb>60)
+             {
+                 pole.visible = false;
+
+                 win.visible = true
+
+
+             }
+
+
+         }
+         if (mainWin.curPlayer === 3)
+         {
+
+
+           image4.curNumb++
+             if(image4.curNumb>60)
+             {
+                 pole.visible = false;
+
+                 win.visible = true
+
+
+             }
+
+
+         }
+     }
+     }
+
+     yesArea.w_plus = 0;
+     noArea.w_minus = 0;
+     if (image1.curNumb<60&&image2.curNumb<60&&image3.curNumb<60&&image4.curNumb<60)
+     if (mainWin.curPlayer === mainWin.playerCount-1)
+     {
+         mainWin.curPlayer = 0
+     }
+     else{
+
+     mainWin.curPlayer++}
+
+
+
+   }
+                            //главное окошко
+
+   id:mainWin
+    title: qsTr("Alias")
+    width: 640
+    height: 480
+    visible: true
+   // property int curNumb:0
+    property int nextRectSt:0
+    property int playerCount: 2
+    property int wordNumb :0
+    property int massWordNumb: 0
+    property int curPlayer: 0
+    property variant corX: [mainWin.width*0.01,mainWin.width*0.01,mainWin.width*0.01,mainWin.width*0.01,mainWin.width*0.01,mainWin.width*0.01,mainWin.width*0.01,mainWin.width*0.01,mainWin.width*0.01,mainWin.width*0.0814285714286,mainWin.width*0.159553571429,mainWin.width*0.237678571429,mainWin.width*0.315803571429,mainWin.width*0.393928571429,mainWin.width*0.472053571429,mainWin.width*0.550178571429,mainWin.width*0.628303571429,mainWin.width*0.706428571429,mainWin.width*0.784553571429,mainWin.width*0.862678571429,mainWin.width*0.934107142857,mainWin.width*0.934107142857,mainWin.width*0.934107142857,mainWin.width*0.934107142857,mainWin.width*0.934107142857,mainWin.width*0.934107142857,mainWin.width*0.934107142857,mainWin.width*0.934107142857,mainWin.width*0.934107142857,mainWin.width*0.855982142857,mainWin.width*0.855982142857,mainWin.width*0.855982142857,mainWin.width*0.855982142857,mainWin.width*0.855982142857,mainWin.width*0.855982142857,mainWin.width*0.855982142857,mainWin.width*0.855982142857,mainWin.width*0.784553571429,mainWin.width*0.706428571429,mainWin.width*0.628303571429,mainWin.width*0.550178571429,mainWin.width*0.472053571429,mainWin.width*0.393928571429,mainWin.width*0.315803571429,mainWin.width*0.237678571429,mainWin.width*0.159553571429,mainWin.width*0.0928869047619,mainWin.width*0.0928869047619,mainWin.width*0.0928869047619,mainWin.width*0.0928869047619,mainWin.width*0.0928869047619,mainWin.width*0.0928869047619,mainWin.width*0.0928869047619,mainWin.width*0.0928869047619,mainWin.width*0.171011904762,mainWin.width*0.249136904762,mainWin.width*0.327261904762,mainWin.width*0.405386904762,mainWin.width*0.483511904762,mainWin.width*0.561636904762,mainWin.width*0.639761904762,mainWin.width*0.717886904762]
+    property variant corY: [mainWin.height,mainWin.height*0.896907216495,mainWin.height*0.79381443299,mainWin.height*0.690721649485,mainWin.height*0.587628865979,mainWin.height*0.484536082474,mainWin.height*0.381443298969,mainWin.height*0.278350515464,mainWin.height*0.175257731959,mainWin.height*0.116434202547,mainWin.height*0.116434202547,mainWin.height*0.116434202547,mainWin.height*0.116434202547,mainWin.height*0.116434202547,mainWin.height*0.116434202547,mainWin.height*0.116434202547,mainWin.height*0.116434202547,mainWin.height*0.116434202547,mainWin.height*0.116434202547,mainWin.height*0.116434202547,mainWin.height*0.175257731959,mainWin.height*0.278350515464,mainWin.height*0.381443298969,mainWin.height*0.484536082474,mainWin.height*0.587628865979,mainWin.height*0.690721649485,mainWin.height*0.79381443299,mainWin.height*0.896907216495,mainWin.height*1.0,mainWin.height*1.0,mainWin.height*0.896907216495,mainWin.height*0.79381443299,mainWin.height*0.690721649485,mainWin.height*0.587628865979,mainWin.height*0.484536082474,mainWin.height*0.381443298969,mainWin.height*0.278350515464,mainWin.height*0.219526986052,mainWin.height*0.219526986052,mainWin.height*0.219526986052,mainWin.height*0.219526986052,mainWin.height*0.219526986052,mainWin.height*0.219526986052,mainWin.height*0.219526986052,mainWin.height*0.219526986052,mainWin.height*0.219526986052,mainWin.height*0.278350515464,mainWin.height*0.381443298969,mainWin.height*0.484536082474,mainWin.height*0.587628865979,mainWin.height*0.690721649485,mainWin.height*0.79381443299,mainWin.height*0.896907216495,mainWin.height*1.0,mainWin.height*1.0,mainWin.height*1.0,mainWin.height*1.0,mainWin.height*1.0,mainWin.height*1.0,mainWin.height*1.0,mainWin.height*1.0,mainWin.height*1.0]
+     property variant winTxt:["Победил Тинки-Винки","Победила Ляля","Победил Дипси","По победил"]
+
+
+    Rectangle
+    {
+        id:win
+        width:parent.width
+        height:parent.height
+        visible:false
+
+
+        Image
+        {
+            width:parent.width
+            height:parent.height
+            source:"win.jpg"
+            Text{
+
+                     anchors.centerIn: parent
+                    text:winTxt[mainWin.curPlayer]
+                     font.pixelSize: 50
+                     color:"black"
+
+
+
+            }
+        }
+
+        MouseArea{
+                  id:mouseWin
+
+
+                  height: parent.height
+                  width: parent.width
+                  onClicked:{
+                      razmeri.visible = true;
+                      pole.visible = false;
+                      wordNumb = 0;
+                      playerCount = 2;
+                      massWordNumb = 0;
+                      curPlayer =  0;
+                      image1.curNumb = 0;
+                      image2.curNumb = 0;
+                      image3.curNumb = 0;
+                      image4.curNumb = 0;
+                      textRectagle.visible = false;
+                      nextRectangle.visible = true;
+                      yesArea.w_plus = 0;
+                      noArea.w_minus = 0;
+                      mainWin.nextRectSt = 0;
+                      win.visible = false;
+
+                  }
+
+        }
+    }
+ Rectangle
+ {
+     id:mainMenu
+     width:parent.width
+     height:parent.height
+     visible:true
+     color:"pink"
+     Item {
+         focus: mainMenu.visible? true :false
+         Keys.onPressed: {
+             if (event.key == Qt.Key_Escape) {
+                  Qt.quit()
+
+             }
+         }
+
+     }
+     Rectangle
+     {
+        id:menuStartRectangle
+        width:parent.width/2
+        height:parent.height/6
+        x:parent.width/4
+        y:parent.height/10
+        Image
+        {
+            id:menuStartImage
+             anchors.fill:parent
+
+             source:"play.png"
+        }
+           MouseArea{
+               anchors.fill:parent
+
+               onEntered:
+               {
+                  if (mainOpenHelpRectangle.visible == false)
+                   {
+                    mainMenu.visible = false;
+                     razmeri.visible = true;
+
+                  }
+
+
+
+
+               }
+
+
+           }
+     }
+     Rectangle
+     {
+         id:menuHelpRectangle
+         width:parent.width/2
+         height:parent.height/5
+         x:parent.width/4
+         y:parent.height/2.5
+         Image
+         {
+              id:menuHelpImage
+
+              anchors.fill:parent
+             source:"help.png"
+         }
+         MouseArea{
+             anchors.fill:parent
+
+             onEntered:
+             {
+
+
+                mainOpenHelpRectangle.visible = true
+
+             }
+     }
+
+ }
+     Rectangle
+     {
+         id:menuQuitRectangle
+         width:parent.width/2
+         height:parent.height/5
+         x:parent.width/4
+         y:parent.height/6*4.5
+         Image
+         {
+              id:menuQuitImage
+
+              anchors.fill:parent
+             source:"quit.png"
+         }
+         MouseArea{
+             anchors.fill:parent
+
+             onEntered:
+             {
+                 if (mainOpenHelpRectangle.visible == false)
+                 {
+
+                Qt.quit()
+                 }
+
+
+
+             }
+     }
+
+ }
+     Rectangle
+     {
+         id:mainOpenHelpRectangle
+
+         opacity:1
+         anchors.horizontalCenter: parent.horizontalCenter
+         anchors.verticalCenter: parent.verticalCenter
+         width:parent.width*2/3
+         height:parent.height
+         visible:false
+         Image
+         {
+             anchors.fill:parent
+             source:"928662__pink-floral-background_p.jpg"
+             Text
+             {
+                 anchors.top:parent.top
+                 anchors.left:parent.left
+                  text:"Все права защищены ООО 'BorsukBelkoINC' 07.05.2015"
+                   font.pixelSize: 15
+                  color:"black"
+
+             }
+            Image
+             {
+                 anchors.bottom:parent.bottom
+                 anchors.right: parent.right
+                 source:"Exit.jpg"
+                 width:parent.width/2
+                 height:parent.height/6
+                 MouseArea{
+                     anchors.fill: parent
+                     onClicked:{
+                        mainOpenHelpRectangle.visible = false;
+                     }
+
+                 }
+             }
+
+         }
+
+
+     }
+
+ }
+   Rectangle
+    {
+        id:razmeri
+        width:parent.width
+        height:parent.height
+        visible:false
+        color:"pink"
+        Item {
+            focus: razmeri.visible? true :false
+            Keys.onPressed: {
+                if (event.key == Qt.Key_Escape) {
+                     mainMenu.visible = true
+                   razmeri.visible = false
+
+
+                }
+            }
+
+        }
+
+        MouseArea{
+                  id:mouse1
+
+                   x:parent.width/4
+
+                  height: parent.height*0.9
+                  width: parent.width/4
+                   hoverEnabled: true
+                   onClicked:{
+                      razmeri.visible = false
+                      mainWin.playerCount = 2
+                       pole.visible = true
+                         timer1.stop();
+                   }
+
+
+
+              }
+        MouseArea{
+                  id:mouse2
+                   y:parent.height*0.1
+                  height: parent.height*0.9
+                  x:parent.width/2
+                  width: parent.width/4
+                  hoverEnabled: true
+                  onClicked:{
+                     razmeri.visible = false
+                     mainWin.playerCount = 3
+                      pole.visible = true
+                        timer1.stop();
+                  }
+                   onEntered:
+                   {
+                       razmer3.opacity = 1
+
+
+
+                   }
+                   onExited:
+                   {
+                       razmer3.opacity = 0.5
+
+                   }
+
+              }
+        MouseArea{
+                  id:mouse3
+
+                  height: parent.height*0.9
+                  y:parent.height*0.1
+                  x:parent.width/4*3
+                  width: parent.width/4
+                   hoverEnabled: true
+                   onClicked:{
+                      razmeri.visible = false
+                      mainWin.playerCount = 4
+                       pole.visible = true
+                       timer1.stop();
+                   }
+                   onEntered:
+                   {
+                       razmer3.opacity = 1
+
+                       razmer4.opacity = 1
+                   }
+                   onExited:
+                   {
+                       razmer3.opacity = 0.5
+
+                       razmer4.opacity = 0.5
+                   }
+
+              }
+
+        AnimatedImage
+        {
+            id: razmer
+            anchors.left: parent.left;
+            anchors.top: parent.top;
+
+
+            width: parent.width
+            height: parent.height*0.1-20
+            source:"razmergruppy.gif"
+
+        }
+
+        Image
+        {
+            id: razmer1
+            anchors.left: parent.left;
+            anchors.bottom: parent.bottom;
+          //  anchors.bottomMargin: 20
+
+            width: parent.width/4-5
+            height: parent.height*0.9
+            source:"1razmer.jpg"
+
+
+        }
+        Image
+        {
+            id: razmer2
+
+
+            anchors.bottom: parent.bottom;
+            //anchors.bottomMargin: 20
+            x:parent.width/4
+            width: parent.width/4-10
+            height: parent.height*0.9
+            source:"2razmer.jpg"
+
+        }
+        Image
+        {
+            id: razmer3
+            opacity:0.5
+            anchors.bottom: parent.bottom;
+            x:parent.width/2
+          //  anchors.bottomMargin: 20
+            anchors.leftMargin: 30
+            anchors.rightMargin: 30
+            width: parent.width/4-10
+            height:parent.height*0.9
+            source:"3razmer.jpg"
+
+        }
+        Image
+        {
+            id: razmer4
+            opacity:0.5
+            anchors.right : parent.right;
+            anchors.bottom: parent.bottom;
+          //  anchors.bottomMargin: 20
+            width: parent.width/4
+            height:parent.height*0.9
+            source:"4razmer.jpg"
+
+        }
+
+
+    }
+
+   // property double s_Y:mainWin.height - mainWin.height/11
+   // property double s_X:mainWin.width/100
+
+
+
+Rectangle{
+          id:pole
+
+          width:parent.width
+          height: parent.height
+             visible:false
+             focus:false
+          //фон*/
+             Item {
+                 focus: pole.visible? true :false
+                 Keys.onPressed: {
+                     if (event.key == Qt.Key_Escape) {
+                         razmeri.visible = true;
+                         pole.visible = false;
+                         wordNumb = 0;
+                         playerCount = 2;
+                         massWordNumb = 0;
+                         curPlayer =  0;
+                         image1.curNumb = 0;
+                         image2.curNumb = 0;
+                         image3.curNumb = 0;
+                         image4.curNumb = 0;
+                         textRectagle.visible = false;
+                         nextRectangle.visible = true;
+                         yesArea.w_plus = 0;
+                         noArea.w_minus = 0;
+                         mainWin.nextRectSt = 0;
+                         win.visible = false
+
+                     }
+                 }
+             }
+
+      Image
+      {
+          id: borderImage1
+          x: 0
+          y: 0
+
+          width: parent.width
+          height: parent.height
+          source: "DQQEL5ebST4.jpg"
+
+
+      }
+                    //полнейшея несуразица которую можно удалить, но не нужно
+       /*ListModel {
+           id: icon
+            ListElement {
+                Image
+                      {
+                         // id:image1
+
+                          x: mainWin.width/100-mainWin.width/39
+                          y: mainWin.height - mainWin.height/11
+                          property double s_Y:mainWin.height - mainWin.height/11
+                          property double s_X:mainWin.width/100
+                          property int curNumb:0
+                          width: mainWin.width/13
+                          height:mainWin.height/13
+                          source: "Dizayni.ru_african_256.png"
+                      }
+            }
+            ListElement {
+                Image
+                {
+                   // id:image2
+                    smooth: true
+                    x: mainWin.width/100-mainWin.width/78
+                    y: mainWin.height - mainWin.height/11
+                    property double s_Y:mainWin.height - mainWin.height/11
+                    property double s_X:mainWin.width/100
+                    property int curNumb:0
+                    width: mainWin.width/13
+                    height: mainWin.height/13
+                    source: "Dizayni.ru_american_256.png"
+                }
+
+            }
+             ListElement {
+                 Image
+                 {
+                     //id:image3
+                     smooth: true
+                     x: mainWin.width/100+mainWin.width/78
+                     y: mainWin.height - mainWin.height/11
+                     property double s_Y:mainWin.height - mainWin.height/11
+                     property double s_X:mainWin.width/100
+                     property int curNumb:0
+                     width: mainWin.width/13
+                     height: mainWin.height/13
+                     source: "Dizayni.ru_asian_256.png"
+                 }
+             }
+             ListElement {
+                 Image
+                 {
+                     //id:image4
+
+                     x: mainWin.width/100+mainWin.width/39
+                     y: mainWin.height - mainWin.height/11
+                     property double s_Y:mainWin.height - mainWin.height/11
+                     property double s_X:mainWin.width/100
+                     property int curNumb:0
+                     width: mainWin.width/13
+                     height: mainWin.height/13
+                     source: "Dizayni.ru_priest_256.png"
+                 }
+
+             }
+       }
+*/
+    //это для того чтобы показать кто ходит и на сколько, цвета заменить под телепузиков
+      Image
+      {
+          id :countImage1;
+          x:mainWin.width/6;
+          y:mainWin.height/100*22
+          opacity:mainWin.curPlayer == 0 ?1 :0.5
+          width: mainWin.curPlayer == 0 ?mainWin.width/10 :mainWin.width/13
+          height:mainWin.curPlayer == 0 ?mainWin.height/10 :mainWin.height/13
+          source: "Dizayni.ru_african_256.png"
+
+      }
+      Text
+      {
+          id:countText1
+          x:countImage1.x+countImage1.width
+          y:countImage1.y
+          text:image1.curNumb
+          font.pixelSize: mainWin.curPlayer == 0 ?35 :30
+              color:"black"
+
+      }
+
+      Image
+      {
+          id :countImage2;
+           opacity:mainWin.curPlayer == 1 ?1 :0.5
+          x:mainWin.width/1.5;
+          y:mainWin.height/100*22
+          width: mainWin.curPlayer == 1 ?mainWin.width/10 :mainWin.width/13
+          height:mainWin.curPlayer == 1 ?mainWin.height/10 :mainWin.height/13
+          source: "Dizayni.ru_american_256.png"
+
+      }
+      Text
+      {
+          id:countText2
+          x:countImage2.x+countImage2.width
+          y:countImage2.y
+          text:image2.curNumb
+          font.pixelSize: mainWin.curPlayer == 1 ?35 :30
+              color:"black"
+
+      }
+      Image
+      {
+          id :countImage3;
+           opacity:mainWin.curPlayer == 2 ?1 :0.5
+          visible:mainWin.playerCount > 2 ?true: false
+          x:mainWin.width/6;
+          y:mainWin.height/1.25
+          width: mainWin.curPlayer == 2 ?mainWin.width/10 :mainWin.width/13
+          height:mainWin.curPlayer == 2 ?mainWin.height/10 :mainWin.height/13
+          source: "Dizayni.ru_asian_256.png"
+
+      }
+      Text
+      {
+          id:countText3
+          visible:mainWin.playerCount > 2 ?true: false
+          x:countImage3.x+countImage3.width
+          y:countImage3.y
+          text:image3.curNumb
+          font.pixelSize: mainWin.curPlayer == 3 ?35 :30
+              color:"black"
+
+      }
+      Image
+      {
+          id :countImage4;
+           opacity:mainWin.curPlayer == 3 ?1 :0.5
+           visible:mainWin.playerCount > 3 ?true: false
+           x:mainWin.width/1.5;
+          y:mainWin.height/1.25
+          width: mainWin.curPlayer == 3 ?mainWin.width/10 :mainWin.width/13
+          height:mainWin.curPlayer == 3 ?mainWin.height/10 :mainWin.height/13
+          source: "Dizayni.ru_priest_256.png"
+
+      }
+      Text
+      {
+          id:countText4
+           visible:mainWin.playerCount > 3 ?true: false
+          x:countImage4.x+countImage4.width
+          y:countImage4.y
+          text:image4.curNumb
+          font.pixelSize: mainWin.curPlayer == 3 ?35 :30
+          color:"black"
+
+      }
+
+  //следующие четыре картинки: негр, амереканец, китаец и еврей
+      Image
+      {
+          id:image1
+
+          x: corX[curNumb]-mainWin.width/39
+          y: corY[curNumb] - mainWin.height/11
+          property double s_Y:mainWin.height - mainWin.height/11
+          property double s_X:mainWin.width/100
+          property int curNumb:0
+          width: mainWin.curPlayer == 0 ?mainWin.width/12 :mainWin.width/13
+          height:mainWin.curPlayer == 0 ?mainWin.height/12 :mainWin.height/13
+          source: "Dizayni.ru_african_256.png"
+      }
+      Image
+      {
+          id:image2
+
+          smooth: true
+          x: corX[curNumb]-mainWin.width/78
+          y: corY[curNumb] - mainWin.height/11
+          property double s_Y:mainWin.height - mainWin.height/11
+          property double s_X:mainWin.width/100
+          property int curNumb:0
+          width: mainWin.curPlayer == 1 ?mainWin.width/12 :mainWin.width/13
+          height:mainWin.curPlayer == 1 ?mainWin.height/12 :mainWin.height/13
+          source: "Dizayni.ru_american_256.png"
+      }
+      Image
+      {
+          id:image3
+          visible:mainWin.playerCount > 2 ?true: false
+          smooth: true
+          x: corX[curNumb]+mainWin.width/78
+          y: corY[curNumb] - mainWin.height/11
+          property double s_Y:mainWin.height - mainWin.height/11
+          property double s_X:mainWin.width/100
+          property int curNumb:0
+          width: mainWin.curPlayer == 2 ?mainWin.width/12 :mainWin.width/13
+          height:mainWin.curPlayer == 2 ?mainWin.height/12 :mainWin.height/13
+          source: "Dizayni.ru_asian_256.png"
+      }
+      Image
+      {
+          id:image4
+          visible:mainWin.playerCount > 3 ?true: false
+          x: corX[curNumb]+mainWin.width/39
+          y: corY[curNumb] - mainWin.height/11
+          property double s_Y:mainWin.height - mainWin.height/11
+          property double s_X:mainWin.width/100
+          property int curNumb:0
+          width: mainWin.curPlayer == 3 ?mainWin.width/12 :mainWin.width/13
+          height:mainWin.curPlayer == 3 ?mainWin.height/12 :mainWin.height/13
+          source: "Dizayni.ru_priest_256.png"
+      }
+
+                        //если вдруг понадобится вывод координат
+    /*  Area{
+          id:mouse
+          anchors.fill:parent
+          hoverEnabled: true
+      }
+        TextMouse
+         {
+
+         anchors.centerIn: parent
+         text:"X:"+yesArea.w_plus+" "+"Y:"+mouse.mouseY
+          font.pixelSize: 20
+          color: "green"
+
+        }*/
+                        //квадрат куда ты должен подключить слова
+  Rectangle
+  {
+      id: nextRectangle
+      anchors.centerIn: parent;
+      width :parent.width/3
+      height:parent.height/3
+
+      visible:true
+      Image{
+          id: imageNextRectangle
+          anchors.fill: parent
+           source: mainWin.nextRectSt==0 ?"telepuziki-personazhi.jpg":"wayboloo2.jpeg"
+           Text
+           {
+                anchors.centerIn: parent
+                text:mainWin.nextRectSt==0 ?"Начинаем ": "Следующий "
+
+                font.pixelSize: 40
+                color:"black"
+
+           }
+           MouseArea
+           {
+               id:nextButton
+               focus:false
+               onClicked:
+               {
+                   mainWin.nextRectSt=1
+                   textRectagle.visible = true;
+                   nextRectangle.visible = false;
+                   textRectagle.timerValue = 5
+                   timer1.start()
+                   timer2.start()
+               }
+
+              anchors.fill:parent
+
+           }
+      }
+
+
+  }
+
+  Rectangle{
+       id:textRectagle
+       anchors.centerIn: parent;
+       width :parent.width/4*3
+       height:parent.height/4*3
+       focus:true
+        opacity:1
+        visible:false
+       property int timerValue:5
+
+
+       /* states:
+        [
+
+     State
+        {
+            name: "activeOK"
+            when:textRectagle.timerValue <= 0
+            PropertyChanges {
+                target: textRectagle; visible:false
+
+
+            }
+
+            PropertyChanges {
+                target: Rectangle; visible:true
+
+
+            }
+            PropertyChanges {
+              target: timer1.stop()
+            }
+            PropertyChanges {
+              target: mainWin.shiftPXY(yesArea.w_plus-noArea.w_minus)
+            }
+
+        }
+       ]*/
+       Image
+       {
+           id: imageRectangle
+           anchors.fill: parent
+           source: "02a2af7c.jpeg"
+           property variant word:["дом","мост","лупа","перец","город","морж","пират","море","яблоко","акула","солнце","шарик","пластилин","ведро","начальник","пылесос","аквариум","монитор","чеснок","страус","расстояние","лень","дым","уксус","комар","спортсмен","провод","мотор","жена","сок","береза","ваза","рыба","занятие","соловей","озеро","кошилек","луна","день","календарь","лопата","качели","страх","сумка","окно","собака","друзья","ребенок","месяц","котенок","конфета","праздник","сон","кресло","нога","шайба","скелет","лодка","остров","браслет","хлеб","курица","крыша","жилет","дневник","мусор","автомобиль","девочка","туфли","вафли","донор","семечки","телефон","гроза","скрепка","радость","мел","бумага","зубы","мышка","нос","трава","варежки","швабра","парик","карандаш","лекарство","юбка","лев","град","база","ноты","радиация","посуда","кондиционер","парад","чашка","порошок","список","фотограф","черепаха","звезда","колпак","барабан","брюки","тетя","брошка","улыбка","палка","блондинка","пост","букет","штраф","смех","цирк","маркер","хорек","клетка","письмо","кнопка","театр","кубик","стакан","щука","гриб","столовая","отличник","книга","пони","раб","слон","провод","звук","папка","ключ","звонок","сестра","лицо","дельфин","идея","булочка","неделя","строчка","врач","череп","фантан","мороженое","ученый","пирожное","столица","швея","здоровье","брат","часы","конверт","стихи","броня","река","трон","шашки","шуба","редиска","линейка","гусь","круиз","пляж","король","сабля","указ","морковь","ложка","печь","теплоход","пальма","конь","мушкетер","салат","груша","треугольник","волк","свет","бассейн","пешка","корона","помидор","мама","занавес","дятел","ёж","яма","кролик","лес","мояк","степлер","пузырь","подставка","ножницы","мишень","мороз","пух","канарейка","специи","лук","беседка","снегурочка","попугай","кислота","лимон","родня","глазок","витраж","любовь","чеснок","сказка","звонок","память","сапоги","светафор","сердце","корыто","ноги","дорога","пельмени","встреча","лилия","дельтаплан","поэт","молния","сирень","квартира","мелодия","валенки","кости","одиночество","бегемот","палатка","автор","дверь","мускулы","шашлык","ягуар","мечта","роза","певец","паста","лыжи","фигура","ландыш","шпион","жест","печать","конец"]
+           Text{
+               id: textWord1
+               anchors.horizontalCenter:parent.horizontalCenter;
+               y:imageRectangle.height/10
+               font.pixelSize:  mainWin.wordNumb == 0 ?40: 30
+               text: imageRectangle.word[mainWin.massWordNumb*8]
+               color: mainWin.wordNumb == 0 ? "blue" :"black"
+
+
+           } Text{
+               id: textWord2
+                anchors.horizontalCenter:parent.horizontalCenter;
+               y:2*imageRectangle.height/10
+              font.pixelSize:  mainWin.wordNumb == 1 ?40: 30
+               text: imageRectangle.word[mainWin.massWordNumb*8+1]
+               color: mainWin.wordNumb == 1 ? "blue" :"black"
+
+
+           }
+           Text{
+               id: textWord3
+                anchors.horizontalCenter:parent.horizontalCenter;
+               y:3*imageRectangle.height/10
+                font.pixelSize:  mainWin.wordNumb == 2 ?40: 30
+               text: imageRectangle.word[mainWin.massWordNumb*8+2]
+               color: mainWin.wordNumb == 2 ? "blue" :"black"
+
+
+           }
+           Text{
+               id: textWord4
+                anchors.horizontalCenter:parent.horizontalCenter;
+               y:4*imageRectangle.height/10
+               font.pixelSize:  mainWin.wordNumb == 3 ?40: 30
+               text: imageRectangle.word[mainWin.massWordNumb*8+3]
+               color: mainWin.wordNumb == 3 ? "blue" :"black"
+
+
+           }
+           Text{
+               id: textWord5
+                anchors.horizontalCenter:parent.horizontalCenter;
+               y:5*parent.height/10
+               font.pixelSize:  mainWin.wordNumb == 4 ?40: 30
+               text: imageRectangle.word[mainWin.massWordNumb*8+4]
+               color: mainWin.wordNumb == 4 ? "blue" :"black"
+
+
+           }
+           Text{
+               id: textWord6
+                anchors.horizontalCenter:parent.horizontalCenter;
+               y:6*imageRectangle.height/10
+                font.pixelSize:  mainWin.wordNumb == 5 ?40: 30
+               text: imageRectangle.word[mainWin.massWordNumb*8+5]
+               color: mainWin.wordNumb == 5 ? "blue" :"black"
+
+
+           }
+           Text{
+               id: textWord7
+                anchors.horizontalCenter:parent.horizontalCenter;
+               y:7*imageRectangle.height/10
+                font.pixelSize:  mainWin.wordNumb == 6 ?40: 30
+               text: imageRectangle.word[mainWin.massWordNumb*8+6]
+               color: mainWin.wordNumb == 6 ? "blue" :"black"
+
+
+           }
+           Text{
+               id: textWord8
+                anchors.horizontalCenter:parent.horizontalCenter;
+               y:8*imageRectangle.height/10
+             font.pixelSize:  mainWin.wordNumb == 7 ?35: 30
+               text: imageRectangle.word[mainWin.massWordNumb*8+7]
+               color: mainWin.wordNumb == 7 ? "blue" :"black"
+
+
+           }
+
+
+           Timer {
+               id: timer1
+               interval:5000
+               running:false
+               repeat: false
+               onTriggered: {textRectagle.visible = false; nextRectangle.visible = true;
+                             mainWin.shiftPXY(yesArea.w_plus-noArea.w_minus);massWordNumb++;mainWin.wordNumb = 0}
+
+
+
+           }
+           Timer {
+               id: timer2
+               interval:1000
+               running:false
+               repeat: true
+               onTriggered: {textRectagle.timerValue--}
+
+           }
+               Text {
+                     id:timerText
+                     x:parent.width/2
+                     font.pixelSize: 40
+                     text: textRectagle.timerValue
+                 }
+
+
+
+
+
+           Text
+           {
+
+                anchors.left: parent.left;
+                text:"+"+yesArea.w_plus
+                font.pixelSize: 40
+                color:"green"
+           }
+           Text
+           {
+
+                anchors.right: parent.right;
+                text:"-"+noArea.w_minus
+                font.pixelSize: 40
+                color:"red"
+           }
+           Rectangle
+           {
+
+               id: okButton
+               anchors.left: parent.left;
+               anchors.bottom: parent.bottom
+               width : parent.width/2
+               height: parent.height/9
+               color:"green"
+               Text{
+                   anchors.horizontalCenter: parent.horizontalCenter
+                   anchors.verticalCenter: parent.verticalCenter
+                   font.pixelSize: 22
+                   id:yesText
+                   text: "Угадал"
+               }
+
+               MouseArea{
+                    id: yesArea
+                   property int w_plus:0
+                    onClicked:
+                    {
+                        if (mainWin.wordNumb!=7)
+                        {
+                        mainWin.wordNumb++
+                        }
+                        else
+                        {
+                            mainWin.massWordNumb++
+                            mainWin.wordNumb =0
+                        }
+                        yesArea.w_plus++
+                    }
+
+                   anchors.fill:parent
+
+               }
+           }
+           Rectangle
+           {
+               id: noButton
+               anchors.right: parent.right;
+               anchors.bottom: parent.bottom
+               width : parent.width/2
+               height: parent.height/9
+               color:"red"
+               Text{
+                   anchors.horizontalCenter: parent.horizontalCenter
+                   anchors.verticalCenter: parent.verticalCenter
+                   font.pixelSize: 22
+                   id:noText
+                   text: "Неудачка"
+               }
+               MouseArea{
+                  id: noArea
+                  property int w_minus:0
+                    onClicked:
+                    {
+
+                        noArea.w_minus++
+                        if (mainWin.wordNumb!=7)
+                        {
+                        mainWin.wordNumb++
+                        }
+                        else
+                        {
+                            mainWin.massWordNumb++
+                            mainWin.wordNumb =0
+                        }
+
+                    }
+
+                   anchors.fill:parent
+
+               }
+           }
+       }
+
+   }
+
+ /*  MouseArea{
+       anchors.fill:parent
+       acceptedButtons: Qt.LeftButton | Qt.RightButton
+       onClicked: {
+           if(mouse.button & Qt.LeftButton) {
+             //  textRectagle.visible =  (textRectagle.visible == true) ? false: true
+
+                  s_Y = shiftPY(curNumb,s_Y)
+                  s_X = shiftPX(curNumb,s_X)
+                  curNumb++
+                 }
+           if(mouse.button & Qt.RightButton) {
+             //  textRectagle.visible =  (textRectagle.visible == true) ? false: true
+                for( z = 0;z<8;z++)
+                {
+                  s_Y = shiftPY(curNumb,s_Y)
+                  s_X = shiftPX(curNumb,s_X)
+                  curNumb++
+                }
+               }
+
+
+
+
+       }
+
+   }
+*/
+
+
+}
